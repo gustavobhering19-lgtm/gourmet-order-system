@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cremosinhos Gourmet — Pedidos Atacado</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar__inner">
+    <div class="brand">
+      <span class="brand__mark" aria-hidden="true">
+        <svg viewBox="0 0 48 48" width="38" height="38">
+          <circle cx="24" cy="26" r="16" fill="var(--gold)"/>
+          <path d="M10 22 C10 12, 38 12, 38 22 C38 22, 24 8, 10 22 Z" fill="var(--choc-dark)"/>
+          <circle cx="18" cy="24" r="2" fill="var(--choc-dark)" opacity="0.5"/>
+          <circle cx="29" cy="29" r="2.2" fill="var(--choc-dark)" opacity="0.5"/>
+          <circle cx="24" cy="33" r="1.6" fill="var(--choc-dark)" opacity="0.5"/>
+        </svg>
+      </span>
+      <div class="brand__text">
+        <span class="brand__name">Cremosinhos</span>
+        <span class="brand__sub">Atacado para empresas</span>
+      </div>
+    </div>
+    <div class="topbar__badge">
+      <span class="dot" aria-hidden="true"></span>
+      Pedido mínimo: 40 unidades
+    </div>
+  </div>
+</header>
+
+<main class="layout">
+
+  <section class="catalog" aria-labelledby="catalog-title">
+    <div class="catalog__head">
+      <h1 id="catalog-title">Monte seu pedido</h1>
+      <p class="catalog__hint">Escolha os sabores e as quantidades. O preço varia por sabor — o total é calculado automaticamente.</p>
+    </div>
+
+    <div id="flavorGrid" class="flavor-grid" role="list">
+      <!-- cards gerados via JS -->
+    </div>
+  </section>
+
+  <aside class="cart" aria-labelledby="cart-title">
+    <div class="cart__sticky">
+
+      <div class="progress" id="progressBlock">
+        <div class="progress__top">
+          <h2 id="cart-title">Seu pedido</h2>
+          <span class="progress__count" id="unitCount">0 <small>un.</small></span>
+        </div>
+
+        <div class="progress__bar-track" role="progressbar" aria-valuemin="0" aria-valuemax="40" id="progressTrack" aria-valuenow="0" aria-label="Progresso até o pedido mínimo de 40 unidades">
+          <div class="progress__bar-fill" id="progressFill"></div>
+        </div>
+
+        <p class="progress__msg" id="progressMsg">Faltam <strong>40</strong> unidades para o pedido mínimo</p>
+      </div>
+
+      <div class="cart__items" id="cartItems">
+        <p class="cart__empty" id="cartEmpty">Seu carrinho está vazio.<br>Adicione cremosinhos ao lado para começar.</p>
+      </div>
+
+      <div class="cart__summary">
+        <div class="cart__row">
+          <span>Quantidade total</span>
+          <strong id="sumQty">0 unidades</strong>
+        </div>
+        <div class="cart__row cart__row--total">
+          <span>Total do pedido</span>
+          <strong id="sumTotal">R$ 0,00</strong>
+        </div>
+      </div>
+
+      <button class="btn-finish" id="btnFinish" type="button" disabled>
+        Finalizar pedido
+      </button>
+      <p class="cart__legal">Pedido simulado — sem cobrança real. Estrutura pronta para integração com WhatsApp.</p>
+    </div>
+  </aside>
+
+</main>
+
+<footer class="page-footer">
+  <p>Cremosinhos Gourmet · Pedidos em atacado para empresas (CNPJ) · Feito para revenda, eventos e brindes corporativos.</p>
+</footer>
+
+<!-- Modal de resumo do pedido -->
+<div class="modal-overlay" id="modalOverlay" aria-hidden="true">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <button class="modal__close" id="modalClose" aria-label="Fechar resumo do pedido">&times;</button>
+    <div class="modal__icon" aria-hidden="true">✓</div>
+    <h2 id="modalTitle">Pedido recebido!</h2>
+    <p class="modal__sub">Confira o resumo abaixo. Em breve isso será enviado direto para o nosso WhatsApp.</p>
+    <pre class="modal__summary" id="modalSummary"></pre>
+    <div class="modal__actions">
+      <button class="btn-secondary" id="btnCopy" type="button">Copiar resumo</button>
+      <button class="btn-whatsapp" id="btnWhatsapp" type="button">Enviar no WhatsApp (em breve)</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="script.js"></script>
+</body>
+</html>
